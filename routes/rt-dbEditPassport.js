@@ -94,6 +94,7 @@ router.post('/results', (req, res, next) => { //take POST request data from dbEd
       //console.log(rows[i]['issueDate'])
       searchResults.push(srcRsObj)
       searchResultsForCSV.push(srcRsObj)
+      searchResXlsx.push(srcRsObj)
       console.log('srcRsObj==>', srcRsObj)
     }
     console.log('searchResults from showSearchResults()==>', searchResults)
