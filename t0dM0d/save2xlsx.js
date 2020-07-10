@@ -13,7 +13,7 @@ const xl = require('excel4node')
 
 module.exports = {
 
-  save2xlxs: router.post('/save2xlxs', (req, res, next) => {
+  save2xlsx: router.post('/save2xlsx', (req, res, next) => {
 
     //NOTE++++++++>>> searchResXlsx is the original array that holds the collection of searchResXlsx objects {columnName: cellValue}
     //HOWEVER, since the inherent order (from showsearchResXlsx()) of these key:value pairs is not NECESSARILY the order we want to display them
