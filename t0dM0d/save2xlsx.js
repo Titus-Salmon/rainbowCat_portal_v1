@@ -174,11 +174,15 @@ module.exports = {
     }
 
 
-    wb.write(`${process.cwd()}/public/xlsx/${req.body['xlsPost']}.xlxs`)
+    wb.write(`${process.cwd()}/public/xlsx/${req.body['xlsxPost']}.xlxs`)
+
+    res.render('vw-dbEditPassport', { //render searchResults to vw-dbEditPassport page
+      title: `<<${process.cwd()}/public/csv/${req.body['xlsxPost']}.xlxs SAVED, and rainbowcat updated>>`,
+    })
 
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // //v//Automatically add note to rainbowcat table that Retail Review has been generated//////////////////////////////////////
-    // let rtlRvwFilename = req.body['xlsPost']
+    // let rtlRvwFilename = req.body['xlsxPost']
     // //here we are doing some js magic to extract the "ediName" from the Rtl Rvw name we're saving (nejTableNameRtlRvwYYYMMDD):
     // // let regex1 = /(\d+)/g
     // let vendorNameSplit1 = rtlRvwFilename.split('nej')
@@ -190,11 +194,11 @@ module.exports = {
 
     // function updateRbCat() {
     //   connection.query(
-    //     `UPDATE rainbowcat SET RtlRvw = '${req.body['xlsPost']}.xlxs' WHERE ediName = '${ediVendorName}'`,
+    //     `UPDATE rainbowcat SET RtlRvw = '${req.body['xlsxPost']}.xlxs' WHERE ediName = '${ediVendorName}'`,
     //     function (err, rows, fields) {
     //       if (err) throw err
     //       res.render('vw-MySqlTableHub', {
-    //         title: `<<${process.cwd()}/public/csv/${req.body['xlsPost']}.xlxs SAVED, and rainbowcat updated>>`
+    //         title: `<<${process.cwd()}/public/csv/${req.body['xlsxPost']}.xlxs SAVED, and rainbowcat updated>>`
     //       })
     //     })
     // }
