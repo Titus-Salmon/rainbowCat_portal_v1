@@ -15,44 +15,44 @@ module.exports = {
 
   save2xlxs: router.post('/save2xlxs', (req, res, next) => {
 
-    //NOTE++++++++>>> searchResults is the original array that holds the collection of SearchResults objects {columnName: cellValue}
-    //HOWEVER, since the inherent order (from showSearchResults()) of these key:value pairs is not NECESSARILY the order we want to display them
-    //in the excel file, and also since there MAY BE additional key:value pairs from searchResults that we DON'T want to display
-    //we selectively reorder and/or remove the key:value pairs from searchResults to form the searchRes_selectiveReordering array
-    //(WITHOUT modifying the original searchResults array).
+    //NOTE++++++++>>> searchResXlsx is the original array that holds the collection of searchResXlsx objects {columnName: cellValue}
+    //HOWEVER, since the inherent order (from showsearchResXlsx()) of these key:value pairs is not NECESSARILY the order we want to display them
+    //in the excel file, and also since there MAY BE additional key:value pairs from searchResXlsx that we DON'T want to display
+    //we selectively reorder and/or remove the key:value pairs from searchResXlsx to form the searchResXlsx_selectiveReordering array
+    //(WITHOUT modifying the original searchResXlsx array).
 
-    var searchRes_selectiveReordering = []
+    var searchResXlsx_selectiveReordering = []
 
-    for (let a = 0; a < searchResults.length; a++) {
+    for (let a = 0; a < searchResXlsx.length; a++) {
       let reorderedResObj = {}
-      reorderedResObj['P_K'] = searchResults[a]['P_K']
-      reorderedResObj['Vendor'] = searchResults[a]['Vendor']
-      reorderedResObj['EDI'] = searchResults[a]['EDI']
-      reorderedResObj['IssDt'] = searchResults[a]['IssDt']
-      reorderedResObj['Cmnts1'] = searchResults[a]['Cmnts1']
-      reorderedResObj['Cmnts2'] = searchResults[a]['Cmnts2']
-      reorderedResObj['Cmnts3'] = searchResults[a]['Cmnts3']
-      reorderedResObj['Andr'] = searchResults[a]['Andr']
-      reorderedResObj['Nathan'] = searchResults[a]['Nathan']
-      reorderedResObj['vndemail'] = searchResults[a]['vndemail']
-      reorderedResObj['wellMarg'] = searchResults[a]['wellMarg']
-      reorderedResObj['ongDisco'] = searchResults[a]['ongDisco']
-      reorderedResObj['EA_Num_divide'] = searchResults[a]['EA_Num_divide']
-      reorderedResObj['CS_Num_divide'] = searchResults[a]['CS_Num_divide']
-      reorderedResObj['special1'] = searchResults[a]['special1']
-      reorderedResObj['disco_appld_to'] = searchResults[a]['disco_appld_to']
-      reorderedResObj['sales_method'] = searchResults[a]['sales_method']
-      reorderedResObj['min_order'] = searchResults[a]['min_order']
-      reorderedResObj['edlp'] = searchResults[a]['edlp']
-      reorderedResObj['order_qty'] = searchResults[a]['order_qty']
-      reorderedResObj['rtlRvw'] = searchResults[a]['rtlRvw']
-      reorderedResObj['rtlImw'] = searchResults[a]['rtlImw']
-      reorderedResObj['tot_updtd'] = searchResults[a]['tot_updtd']
+      reorderedResObj['P_K'] = searchResXlsx[a]['P_K']
+      reorderedResObj['Vendor'] = searchResXlsx[a]['Vendor']
+      reorderedResObj['EDI'] = searchResXlsx[a]['EDI']
+      reorderedResObj['IssDt'] = searchResXlsx[a]['IssDt']
+      reorderedResObj['Cmnts1'] = searchResXlsx[a]['Cmnts1']
+      reorderedResObj['Cmnts2'] = searchResXlsx[a]['Cmnts2']
+      reorderedResObj['Cmnts3'] = searchResXlsx[a]['Cmnts3']
+      reorderedResObj['Andr'] = searchResXlsx[a]['Andr']
+      reorderedResObj['Nathan'] = searchResXlsx[a]['Nathan']
+      reorderedResObj['vndemail'] = searchResXlsx[a]['vndemail']
+      reorderedResObj['wellMarg'] = searchResXlsx[a]['wellMarg']
+      reorderedResObj['ongDisco'] = searchResXlsx[a]['ongDisco']
+      reorderedResObj['EA_Num_divide'] = searchResXlsx[a]['EA_Num_divide']
+      reorderedResObj['CS_Num_divide'] = searchResXlsx[a]['CS_Num_divide']
+      reorderedResObj['special1'] = searchResXlsx[a]['special1']
+      reorderedResObj['disco_appld_to'] = searchResXlsx[a]['disco_appld_to']
+      reorderedResObj['sales_method'] = searchResXlsx[a]['sales_method']
+      reorderedResObj['min_order'] = searchResXlsx[a]['min_order']
+      reorderedResObj['edlp'] = searchResXlsx[a]['edlp']
+      reorderedResObj['order_qty'] = searchResXlsx[a]['order_qty']
+      reorderedResObj['rtlRvw'] = searchResXlsx[a]['rtlRvw']
+      reorderedResObj['rtlImw'] = searchResXlsx[a]['rtlImw']
+      reorderedResObj['tot_updtd'] = searchResXlsx[a]['tot_updtd']
 
-      searchRes_selectiveReordering.push(reorderedResObj)
+      searchResXlsx_selectiveReordering.push(reorderedResObj)
     }
 
-    console.log(`JSON.stringify(searchRes_selectiveReordering[0])==> ${JSON.stringify(searchRes_selectiveReordering[0])}`)
+    console.log(`JSON.stringify(searchResXlsx_selectiveReordering[0])==> ${JSON.stringify(searchResXlsx_selectiveReordering[0])}`)
 
 
     // Create a new instance of a Workbook class
@@ -128,37 +128,37 @@ module.exports = {
       },
     })
 
-    for (let i = 0; i < Object.keys(searchRes_selectiveReordering[0]).length; i++) {
+    for (let i = 0; i < Object.keys(searchResXlsx_selectiveReordering[0]).length; i++) {
 
       ws.cell(1, i + 1) //this targets "header" cells
-        .string(`${Object.keys(searchRes_selectiveReordering[0])[i]}`)
+        .string(`${Object.keys(searchResXlsx_selectiveReordering[0])[i]}`)
         .style(headerStyle)
 
-      for (let j = 0; j < searchRes_selectiveReordering.length; j++) {
+      for (let j = 0; j < searchResXlsx_selectiveReordering.length; j++) {
 
         ws.cell(j + 2, i + 1)
-          .string(`${Object.values(searchRes_selectiveReordering[j])[i]}`)
+          .string(`${Object.values(searchResXlsx_selectiveReordering[j])[i]}`)
           .style(bodyStyle)
-        if (Object.keys(searchRes_selectiveReordering[0])[i] == 'IssDt') {
-          let cellDate = new Date(Object.values(searchRes_selectiveReordering[j])[i])
+        if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'IssDt') {
+          let cellDate = new Date(Object.values(searchResXlsx_selectiveReordering[j])[i])
           let currentDate = new Date()
           if (Date.dateDiff('w', cellDate, currentDate) > 24) //if issue date of cat is more than 6 months old
             ws.cell(j + 2, i + 1).style(issDateHilite)
         }
-        if (Object.keys(searchRes_selectiveReordering[0])[i] == 'ediPrice') {
+        if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'ediPrice') {
           ws.cell(j + 2, i + 1).style(ediPriceHilite)
         }
-        if (Object.keys(searchRes_selectiveReordering[0])[i] == 'sibBasePrice') {
+        if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'sibBasePrice') {
           ws.cell(j + 2, i + 1).style(sibBasePriceHilite)
         }
-        if (Object.values(searchRes_selectiveReordering[j])[i] == 'invalid oupName') {
+        if (Object.values(searchResXlsx_selectiveReordering[j])[i] == 'invalid oupName') {
           ws.cell(j + 2, i + 1).style(invalidOupName)
         }
       }
     }
 
 
-    wb.write(`${process.cwd()}/public/csv/${req.body['xlsPost']}.xlxs`)
+    wb.write(`${process.cwd()}/public/xlsx/${req.body['xlsPost']}.xlxs`)
 
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // //v//Automatically add note to rainbowcat table that Retail Review has been generated//////////////////////////////////////

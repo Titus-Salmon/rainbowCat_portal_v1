@@ -55,6 +55,10 @@ html
 			form#saveCSVPost(action='/dbEditPassport/saveCSV' method='POST' accept-charset='UTF-8')
 				label.input-label-1(for='csv') filename:
 					input#csv.input-unit-1(type='text', placeholder='enter filename here', name='csvPost', value='')
+			button.adminButton#saveCSV(type="submit" form="saveXlsxPost") Save Results as CSV
+			form#saveXlsxPost(action='/dbEditPassport/save2xlsx' method='POST' accept-charset='UTF-8')
+				label.input-label-1(for='xlsx') filename:
+					input#xlsx.input-unit-1(type='text', placeholder='enter filename here', name='xlsxPost', value='')
 
 		div.rslt-tbl-1
 			table#resTbl

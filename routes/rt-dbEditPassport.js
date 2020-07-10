@@ -57,6 +57,7 @@ router.post('/results', (req, res, next) => { //take POST request data from dbEd
   let searchResults = [] //clear searchResults from previous search
   console.log('searchResults from router.post level===>', searchResults)
   searchResultsForCSV = []
+  searchResXlsx = []
   console.log('searchResultsForCSV from router.post level===>', searchResultsForCSV)
   csvContainer = []
   console.log('csvContainer from router.post level===>', csvContainer)
