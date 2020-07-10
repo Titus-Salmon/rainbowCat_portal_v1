@@ -15,6 +15,22 @@ module.exports = {
 
   save2xlsx: router.post('/save2xlsx', (req, res, next) => {
 
+    //begin date difference calculator////////////////////////////////////////////////////
+    Date.dateDiff = function (datepart, fromdate, todate) {
+      datepart = datepart.toLowerCase();
+      var diff = todate - fromdate;
+      var divideBy = {
+        w: 604800000, //ms in one week
+        d: 86400000, //ms in one day
+        h: 3600000, //ms in one hour
+        m: 60000, //ms in one minute
+        s: 1000 //ms in one second
+      };
+
+      return Math.floor(diff / divideBy[datepart]);
+    }
+    //end date difference calculator////////////////////////////////////////////////////
+
     //NOTE++++++++>>> searchResXlsx is the original array that holds the collection of searchResXlsx objects {columnName: cellValue}
     //HOWEVER, since the inherent order (from showsearchResXlsx()) of these key:value pairs is not NECESSARILY the order we want to display them
     //in the excel file, and also since there MAY BE additional key:value pairs from searchResXlsx that we DON'T want to display
