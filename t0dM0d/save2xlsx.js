@@ -177,7 +177,7 @@ module.exports = {
     wb.write(`${process.cwd()}/public/xlsx/${req.body['xlsxPost']}.xlxs`)
 
     res.render('vw-dbEditPassport', { //render searchResults to vw-dbEditPassport page
-      title: `<<${process.cwd()}/public/csv/${req.body['xlsxPost']}.xlxs SAVED, and rainbowcat updated>>`,
+      title: `<<${process.cwd()}/public/csv/${req.body['xlsxPost']}.xlxs SAVED>>`,
     })
 
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
