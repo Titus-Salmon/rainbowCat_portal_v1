@@ -7,6 +7,10 @@ const {
 
 const mysql = require('mysql')
 
+const {
+  save2xlxs
+} = require('../t0dM0d/save2xlsx')
+
 // const connection = mysql.createConnection(process.env.JAWSDB_MARIA_URL)
 
 const connection = mysql.createConnection({
@@ -40,6 +44,8 @@ router.get('/', ensureAuthenticated, function (req, res, next) {
     ANDREA_ADMIN_EMAIL: process.env.ANDREA_ADMIN_EMAIL,
   })
 })
+
+router.post('/save2xlxs', save2xlxs)
 
 let searchResultsForCSV = []
 console.log('searchResultsForCSV from top level', searchResultsForCSV)
