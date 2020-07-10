@@ -33,7 +33,7 @@ module.exports = {
 
     //NOTE++++++++>>> searchResXlsx is the original array that holds the collection of searchResXlsx objects {columnName: cellValue}
     //HOWEVER, since the inherent order (from showsearchResXlsx()) of these key:value pairs is not NECESSARILY the order we want to display them
-    //in the excel file, and also since there MAY BE additional key:value pairs from searchResXlsx that we DON'T want to display
+    //in the excel file, and also since there MAY BE additional key:value pairs from searchResXlsx that we DON'T want to display (i.e. P_K)
     //we selectively reorder and/or remove the key:value pairs from searchResXlsx to form the searchResXlsx_selectiveReordering array
     //(WITHOUT modifying the original searchResXlsx array).
 
@@ -41,7 +41,7 @@ module.exports = {
 
     for (let a = 0; a < searchResXlsx.length; a++) {
       let reorderedResObj = {}
-      reorderedResObj['P_K'] = searchResXlsx[a]['P_K']
+      // reorderedResObj['P_K'] = searchResXlsx[a]['P_K']
       reorderedResObj['Vendor'] = searchResXlsx[a]['Vendor']
       reorderedResObj['EDI'] = searchResXlsx[a]['EDI']
       reorderedResObj['IssDt'] = searchResXlsx[a]['IssDt']
