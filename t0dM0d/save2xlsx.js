@@ -61,10 +61,10 @@ module.exports = {
       reorderedResObj['min_order'] = searchResXlsx[a]['min_order']
       reorderedResObj['edlp'] = searchResXlsx[a]['edlp']
       reorderedResObj['order_qty'] = searchResXlsx[a]['order_qty']
-      reorderedResObj['rtlRvw'] = searchResXlsx[i]['rtlRvw']
-      reorderedResObj['wsImw'] = searchResXlsx[i]['wsImw']
-      reorderedResObj['rtlImw'] = searchResXlsx[i]['rtlImw']
-      reorderedResObj['tot_updtd_rtl'] = searchResXlsx[i]['tot_updtd_rtl']
+      reorderedResObj['rtlRvw'] = searchResXlsx[a]['rtlRvw']
+      reorderedResObj['wsImw'] = searchResXlsx[a]['wsImw']
+      reorderedResObj['rtlImw'] = searchResXlsx[a]['rtlImw']
+      reorderedResObj['tot_updtd_rtl'] = searchResXlsx[a]['tot_updtd_rtl']
 
       searchResXlsx_selectiveReordering.push(reorderedResObj)
     }
