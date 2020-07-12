@@ -89,8 +89,9 @@ router.post('/results', (req, res, next) => { //take POST request data from dbEd
       srcRsObj['edlp'] = rows[i]['edlp']
       srcRsObj['order_qty'] = rows[i]['order_qty']
       srcRsObj['rtlRvw'] = rows[i]['rtlRvw']
+      srcRsObj['wsImw'] = rows[i]['wsImw']
       srcRsObj['rtlImw'] = rows[i]['rtlImw']
-      srcRsObj['tot_updtd'] = rows[i]['tot_updtd']
+      srcRsObj['tot_updtd_rtl'] = rows[i]['tot_updtd_rtl']
       //console.log(rows[i]['issueDate'])
       searchResults.push(srcRsObj)
       searchResultsForCSV.push(srcRsObj)
