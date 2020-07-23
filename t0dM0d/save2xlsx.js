@@ -189,22 +189,22 @@ module.exports = {
           if (Date.dateDiff('w', cellDate, currentDate) > 24) //if issue date of cat is more than 6 months old
             ws.cell(j + 2, i + 1).style(issDateHilite)
         }
-        if (ws.cell(j + 2, i + 1).toLowerCase().includes('wholesale updated')) {
+        if (ws.cell(j + 2, i + 1).innerHTML.toLowerCase().includes('wholesale updated')) {
           ws.cell(j + 2, i + 1).style(wsUpdatedHilite)
         }
-        if (ws.cell(j + 2, i + 1).toLowerCase().includes('retail updated')) {
+        if (ws.cell(j + 2, i + 1).innerHTML.toLowerCase().includes('retail updated')) {
           ws.cell(j + 2, i + 1).style(rtlUpdatedHilite)
         }
-        if (ws.cell(j + 2, i + 1).toLowerCase().includes('not in edi')) {
+        if (ws.cell(j + 2, i + 1).innerHTML.toLowerCase().includes('not in edi')) {
           ws.cell(j + 2, i + 1).style(notInEdiHilite)
         }
-        if (ws.cell(j + 2, i + 1).toLowerCase().includes('requested cat')) {
+        if (ws.cell(j + 2, i + 1).innerHTML.toLowerCase().includes('requested cat')) {
           ws.cell(j + 2, i + 1).style(requestedCatHilite)
         }
-        if (ws.cell(j + 2, i + 1).toLowerCase().includes('todo')) {
+        if (ws.cell(j + 2, i + 1).innerHTML.toLowerCase().includes('todo')) {
           ws.cell(j + 2, i + 1).style(toDoHilite)
         }
-        if (ws.cell(j + 2, i + 1).toLowerCase().includes('sent retail review')) {
+        if (ws.cell(j + 2, i + 1).innerHTML.toLowerCase().includes('sent retail review')) {
           ws.cell(j + 2, i + 1).style(sentRetailReviewHilite)
         }
         // if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'ediPrice') {
