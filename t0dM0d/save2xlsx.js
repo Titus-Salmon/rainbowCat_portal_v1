@@ -118,30 +118,57 @@ module.exports = {
       },
     })
 
-    var ediPriceHilite = wb.createStyle({
+    var wsUpdatedHilite = wb.createStyle({
       fill: { // §18.8.20 fill (Fill)
         type: 'pattern', // Currently only 'pattern' is implemented. Non-implemented option is 'gradient'
         patternType: 'solid', //solid=t0d //§18.18.55 ST_PatternType (Pattern Type)
         bgColor: 'black', // HTML style hex value. defaults to black
-        fgColor: '#93CDDD' // HTML style hex value. defaults to black.
+        fgColor: '#00aaaa' // HTML style hex value. defaults to black.
       },
     })
 
-    var sibBasePriceHilite = wb.createStyle({
+    var rtlUpdatedHilite = wb.createStyle({
       fill: { // §18.8.20 fill (Fill)
         type: 'pattern', // Currently only 'pattern' is implemented. Non-implemented option is 'gradient'
         patternType: 'solid', //solid=t0d //§18.18.55 ST_PatternType (Pattern Type)
         bgColor: 'black', // HTML style hex value. defaults to black
-        fgColor: 'yellow' // HTML style hex value. defaults to black.
+        fgColor: '00ffcc' // HTML style hex value. defaults to black.
       },
     })
 
-    var invalidOupName = wb.createStyle({
+    var notInEdiHilite = wb.createStyle({
       fill: { // §18.8.20 fill (Fill)
         type: 'pattern', // Currently only 'pattern' is implemented. Non-implemented option is 'gradient'
         patternType: 'solid', //solid=t0d //§18.18.55 ST_PatternType (Pattern Type)
         bgColor: 'black', // HTML style hex value. defaults to black
-        fgColor: 'red' // HTML style hex value. defaults to black.
+        fgColor: 'ffb3ca' // HTML style hex value. defaults to black.
+      },
+    })
+
+    var requestedCatHilite = wb.createStyle({
+      fill: { // §18.8.20 fill (Fill)
+        type: 'pattern', // Currently only 'pattern' is implemented. Non-implemented option is 'gradient'
+        patternType: 'solid', //solid=t0d //§18.18.55 ST_PatternType (Pattern Type)
+        bgColor: 'black', // HTML style hex value. defaults to black
+        fgColor: 'ccd9ff' // HTML style hex value. defaults to black.
+      },
+    })
+
+    var toDoHilite = wb.createStyle({
+      fill: { // §18.8.20 fill (Fill)
+        type: 'pattern', // Currently only 'pattern' is implemented. Non-implemented option is 'gradient'
+        patternType: 'solid', //solid=t0d //§18.18.55 ST_PatternType (Pattern Type)
+        bgColor: 'black', // HTML style hex value. defaults to black
+        fgColor: 'ff0000' // HTML style hex value. defaults to black.
+      },
+    })
+
+    var sentRetailReviewHilite = wb.createStyle({
+      fill: { // §18.8.20 fill (Fill)
+        type: 'pattern', // Currently only 'pattern' is implemented. Non-implemented option is 'gradient'
+        patternType: 'solid', //solid=t0d //§18.18.55 ST_PatternType (Pattern Type)
+        bgColor: 'black', // HTML style hex value. defaults to black
+        fgColor: 'ffab00' // HTML style hex value. defaults to black.
       },
     })
 
@@ -162,15 +189,33 @@ module.exports = {
           if (Date.dateDiff('w', cellDate, currentDate) > 24) //if issue date of cat is more than 6 months old
             ws.cell(j + 2, i + 1).style(issDateHilite)
         }
-        if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'ediPrice') {
-          ws.cell(j + 2, i + 1).style(ediPriceHilite)
+        if (ws.cell(j + 2, i + 1).toLowerCase().includes('wholesale updated')) {
+          ws.cell(j + 2, i + 1).style(wsUpdatedHilite)
         }
-        if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'sibBasePrice') {
-          ws.cell(j + 2, i + 1).style(sibBasePriceHilite)
+        if (ws.cell(j + 2, i + 1).toLowerCase().includes('retail updated')) {
+          ws.cell(j + 2, i + 1).style(rtlUpdatedHilite)
         }
-        if (Object.values(searchResXlsx_selectiveReordering[j])[i] == 'invalid oupName') {
-          ws.cell(j + 2, i + 1).style(invalidOupName)
+        if (ws.cell(j + 2, i + 1).toLowerCase().includes('not in edi')) {
+          ws.cell(j + 2, i + 1).style(notInEdiHilite)
         }
+        if (ws.cell(j + 2, i + 1).toLowerCase().includes('requested cat')) {
+          ws.cell(j + 2, i + 1).style(requestedCatHilite)
+        }
+        if (ws.cell(j + 2, i + 1).toLowerCase().includes('todo')) {
+          ws.cell(j + 2, i + 1).style(toDoHilite)
+        }
+        if (ws.cell(j + 2, i + 1).toLowerCase().includes('sent retail review')) {
+          ws.cell(j + 2, i + 1).style(sentRetailReviewHilite)
+        }
+        // if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'ediPrice') {
+        //   ws.cell(j + 2, i + 1).style(ediPriceHilite)
+        // }
+        // if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'sibBasePrice') {
+        //   ws.cell(j + 2, i + 1).style(sibBasePriceHilite)
+        // }
+        // if (Object.values(searchResXlsx_selectiveReordering[j])[i] == 'invalid oupName') {
+        //   ws.cell(j + 2, i + 1).style(invalidOupName)
+        // }
       }
     }
 
