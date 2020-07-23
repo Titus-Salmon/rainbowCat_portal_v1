@@ -189,24 +189,27 @@ module.exports = {
           if (Date.dateDiff('w', cellDate, currentDate) > 24) //if issue date of cat is more than 6 months old
             ws.cell(j + 2, i + 1).style(issDateHilite)
         }
-        if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('wholesale updated')) {
-          ws.cell(j + 2, i + 1).style(wsUpdatedHilite)
+        if (Object.values(searchResXlsx_selectiveReordering[j])[i] !== null) {
+          if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('wholesale updated')) {
+            ws.cell(j + 2, i + 1).style(wsUpdatedHilite)
+          }
+          if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('retail updated')) {
+            ws.cell(j + 2, i + 1).style(rtlUpdatedHilite)
+          }
+          if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('not in edi')) {
+            ws.cell(j + 2, i + 1).style(notInEdiHilite)
+          }
+          if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('requested cat')) {
+            ws.cell(j + 2, i + 1).style(requestedCatHilite)
+          }
+          if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('todo')) {
+            ws.cell(j + 2, i + 1).style(toDoHilite)
+          }
+          if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('sent retail review')) {
+            ws.cell(j + 2, i + 1).style(sentRetailReviewHilite)
+          }
         }
-        if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('retail updated')) {
-          ws.cell(j + 2, i + 1).style(rtlUpdatedHilite)
-        }
-        if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('not in edi')) {
-          ws.cell(j + 2, i + 1).style(notInEdiHilite)
-        }
-        if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('requested cat')) {
-          ws.cell(j + 2, i + 1).style(requestedCatHilite)
-        }
-        if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('todo')) {
-          ws.cell(j + 2, i + 1).style(toDoHilite)
-        }
-        if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('sent retail review')) {
-          ws.cell(j + 2, i + 1).style(sentRetailReviewHilite)
-        }
+
         // if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'ediPrice') {
         //   ws.cell(j + 2, i + 1).style(ediPriceHilite)
         // }
