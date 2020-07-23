@@ -72,6 +72,7 @@ router.post('/results', (req, res, next) => { //take POST request data from dbEd
       srcRsObj['IssDt'] = rows[i]['issueDate']
       srcRsObj['NdNw'] = rows[i]['needNewCat']
       srcRsObj['Updtd'] = rows[i]['updatedWLatest']
+      srcRsObj['last_rtl_updt'] = rows[i]['last_rtl_updt']
       srcRsObj['Cmnts1'] = rows[i]['comments1']
       srcRsObj['Cmnts2'] = rows[i]['comments2']
       srcRsObj['Cmnts3'] = rows[i]['comments3']

@@ -45,6 +45,7 @@ module.exports = {
       reorderedResObj['Vendor'] = searchResXlsx[a]['Vendor']
       reorderedResObj['EDI'] = searchResXlsx[a]['EDI']
       reorderedResObj['IssDt'] = searchResXlsx[a]['IssDt']
+      reorderedResObj['last_rtl_updt'] = searchResXlsx[i]['last_rtl_updt']
       reorderedResObj['Cmnts1'] = searchResXlsx[a]['Cmnts1']
       // reorderedResObj['Cmnts2'] = searchResXlsx[a]['Cmnts2']
       // reorderedResObj['Cmnts3'] = searchResXlsx[a]['Cmnts3']
@@ -184,9 +185,15 @@ module.exports = {
           .string(`${Object.values(searchResXlsx_selectiveReordering[j])[i]}`)
           .style(bodyStyle)
         if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'IssDt') {
-          let cellDate = new Date(Object.values(searchResXlsx_selectiveReordering[j])[i])
-          let currentDate = new Date()
-          if (Date.dateDiff('w', cellDate, currentDate) > 24) //if issue date of cat is more than 6 months old
+          let cellDate1 = new Date(Object.values(searchResXlsx_selectiveReordering[j])[i])
+          let currentDate1 = new Date()
+          if (Date.dateDiff('w', cellDate1, currentDate1) > 24) //if issue date of cat is more than 6 months old
+            ws.cell(j + 2, i + 1).style(issDateHilite)
+        }
+        if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'last_rtl_updt') {
+          let cellDate2 = new Date(Object.values(searchResXlsx_selectiveReordering[j])[i])
+          let currentDate2 = new Date()
+          if (Date.dateDiff('w', cellDate2, currentDate2) > 24) //if issue date of cat is more than 6 months old
             ws.cell(j + 2, i + 1).style(issDateHilite)
         }
         if (Object.values(searchResXlsx_selectiveReordering[j])[i] !== null) {
