@@ -191,10 +191,12 @@ module.exports = {
             ws.cell(j + 2, i + 1).style(issDateHilite)
         }
         if (Object.keys(searchResXlsx_selectiveReordering[0])[i] == 'last_rtl_updt') {
-          let cellDate2 = new Date(Object.values(searchResXlsx_selectiveReordering[j])[i])
-          let currentDate2 = new Date()
-          if (Date.dateDiff('w', cellDate2, currentDate2) > 24) //if issue date of cat is more than 6 months old
-            ws.cell(j + 2, i + 1).style(issDateHilite)
+          if (Object.values(searchResXlsx_selectiveReordering[j])[i] !== null) {
+            let cellDate2 = new Date(Object.values(searchResXlsx_selectiveReordering[j])[i])
+            let currentDate2 = new Date()
+            if (Date.dateDiff('w', cellDate2, currentDate2) > 24) //if issue date of cat is more than 6 months old
+              ws.cell(j + 2, i + 1).style(issDateHilite)
+          }
         }
         if (Object.values(searchResXlsx_selectiveReordering[j])[i] !== null) {
           if (Object.values(searchResXlsx_selectiveReordering[j])[i].toLowerCase().includes('wholesale updated')) {
